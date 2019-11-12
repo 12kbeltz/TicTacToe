@@ -19,7 +19,8 @@ class outcomes:
                 return True
 
 
-    #creates a decision tree for every possible outcome
+    # creating changes for X and O to be different
+    # creates a decision tree for every possible outcome
     def paths(self, board: list, spot: int, switcher: int = 0):
 
         #
