@@ -1,3 +1,5 @@
+from pprint import pprint
+
 class outcomes:
 
     # checks if there is a win loss or draw
@@ -23,7 +25,6 @@ class outcomes:
     # creates a decision tree for every possible outcome
     def paths(self, board: list, spot: int, switcher: int = 0):
 
-        #
         for j in [i for i in board if type(i) == int]:
             self.test_board = board[:]
             if switcher % 2 == 0:
@@ -47,7 +48,6 @@ class outcomes:
     # creates a seperate loop for first moves to organize into outc_dict
     def firstMove(self, board: list):
 
-        #
         self.outc_dict = {}
         for j in [i for i in board if type(i) == int]:
             self.outc_dict[j] = [0,0,0]
@@ -63,7 +63,17 @@ class outcomes:
         return self.outc_dict
 
 
+    # decide which spot the computer will play
+    def choose(self, board):
 
+        self.choose_dict = {}
+        self.dict = self.firstMove(board)
+        for k, v in self.dict.items():
+            total = sum(self.dict[k])
+            self.choose_dict[k - 1] = [[v[0] / total],
+                                       [v[1] / total],
+                                       [v[2] / total]]
+        pprint(self.choose_dict)
 
 
 
